@@ -14,7 +14,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "bento/debian-8.2"
 
   # Synced folder for Django project
-  if ENV.key?('DJANGO_SOURCE')
+  if ENV['DJANGO_SOURCE']
     source = ENV['DJANGO_SOURCE']
   else
     source = 'src/'
