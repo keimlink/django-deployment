@@ -60,6 +60,95 @@ using Vagrant`s ``ssh`` command:
 
     $ vagrant ssh
 
+Changing the location where Apache searches the WSGI config
+===========================================================
+
+If the directory where your ``wsgi.py`` is located is not named ``cookbook``
+you need to update the Apache configuration. Otherwise you can skip this step.
+To do this run the following command, where you should replace ``myproject`` at
+the end with the name of the directory where your ``wsgi.py`` file is located:
+
+::
+
+    $ sudo salt-call state.sls apache pillar='{"project": {"django-config": "myproject"}}'
+
+There will be a lot of output, important is the end which should look like this:
+
+::
+
+    local:
+    ----------
+              ID: apache2
+        Function: pkg.installed
+          Result: True
+         Comment: Package apache2 is already installed
+         Started: 18:12:14.323333
+        Duration: 294.493 ms
+         Changes:
+    ----------
+              ID: /etc/apache2/sites-available/django.conf
+        Function: file.managed
+          Result: True
+         Comment: File /etc/apache2/sites-available/django.conf updated
+         Started: 18:12:14.619727
+        Duration: 44.053 ms
+         Changes:
+                  ----------
+                  diff:
+                      ---
+                      +++
+                      @@ -26,9 +26,9 @@
+                           # WSGI
+                           WSGIDaemonProcess django.example.com python-path=/src:/home/vagrant/venv/lib/python2.7/site-packages processes=2 threads=15 display-name=%{GROUP}
+                           WSGIProcessGroup django.example.com
+                      -    WSGIScriptAlias / /src/cookbook/wsgi.py
+                      +    WSGIScriptAlias / /src/myproject/wsgi.py
+
+                      -    <Directory /src/cookbook>
+                      +    <Directory /src/myproject>
+                               <Files wsgi.py>
+                                   Require all granted
+                               </Files>
+    ----------
+              ID: apache2
+        Function: service.running
+          Result: True
+         Comment: Service restarted
+         Started: 18:12:14.872621
+        Duration: 2543.516 ms
+         Changes:
+                  ----------
+                  apache2:
+                      True
+    ----------
+              ID: libapache2-mod-wsgi
+        Function: pkg.installed
+          Result: True
+         Comment: Package libapache2-mod-wsgi is already installed
+         Started: 18:12:17.417357
+        Duration: 4.855 ms
+         Changes:
+    ----------
+              ID: /etc/apache2/sites-enabled/000-default.conf
+        Function: file.symlink
+          Result: True
+         Comment: Symlink /etc/apache2/sites-enabled/000-default.conf is present and owned by root:root
+         Started: 18:12:17.422777
+        Duration: 1.77 ms
+         Changes:
+
+    Summary for local
+    ------------
+    Succeeded: 5 (changed=2)
+    Failed:    0
+    ------------
+    Total states run:     5
+    Total run time:   2.889 s
+
+If ``Failed`` has a value different from ``0``, check if you have made any
+typos. Also take a close look at the error message(s). They usually contain a
+hint that helps you to find out the reason for the error.
+
 Testing PostgreSQL
 ==================
 
