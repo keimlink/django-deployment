@@ -343,6 +343,7 @@ Learning more about the configuration of Apache and PostgreSQL
 If you want to understand how Apache and PostgreSQL have been configured to
 work with Django, take a look the following files:
 
+* ``/etc/apache2/conf-available/wsgi.conf``
 * ``/etc/apache2/sites-available/django.conf``
 * ``/etc/postgresql/9.4/main/pg_hba.conf``
 
