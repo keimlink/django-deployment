@@ -5,6 +5,7 @@ cd /src
 pip install -r requirements.txt
 ./manage.py migrate
 ./manage.py migrate --database=newsdb
+./manage.py check --deploy
 ./manage.py createsuperuser --username admin --email admin@example.com
 ./manage.py loaddata recipes initial_data
 ./manage.py collectstatic -v0 --noinput

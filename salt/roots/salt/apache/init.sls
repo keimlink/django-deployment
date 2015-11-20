@@ -6,6 +6,10 @@ apache2:
     - watch:
       - file: /etc/apache2/sites-available/django.conf
 
+Enable headers module:
+    apache_module.enable:
+        - name: headers
+
 libapache2-mod-wsgi:
   pkg.installed:
     - require:

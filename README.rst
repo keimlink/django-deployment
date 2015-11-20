@@ -169,8 +169,12 @@ Configuring your Django project
 ===============================
 
 Now configure your Django project to use this database connection for all three
-databases by editing ``local_settings.py``. Also, don't forget to the other
-settings ``DEBUG``, ``ALLOWED_HOSTS`` and ``MEDIA_ROOT``:
+databases by editing ``local_settings.py`` as shown below. Also, don't forget
+to add the other settings ``DEBUG``, ``ALLOWED_HOSTS`` and ``MEDIA_ROOT``.
+
+The settings at the end of the file are security-related. They enable a few
+basic security settings. The setting ``SILENCED_SYSTEM_CHECKS`` disables SSL-
+related checks as we're not using SSL for this deployment.
 
 .. code-block:: python
 
@@ -203,6 +207,23 @@ settings ``DEBUG``, ``ALLOWED_HOSTS`` and ``MEDIA_ROOT``:
             'CONN_MAX_AGE': 600,
         },
     }
+
+    # Security
+
+    CSRF_COOKIE_HTTPONLY = True
+
+    SECURE_BROWSER_XSS_FILTER = True
+
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+
+    X_FRAME_OPTIONS = 'DENY'
+
+    SILENCED_SYSTEM_CHECKS = [
+        'security.W004',
+        'security.W008',
+        'security.W012',
+        'security.W016'
+    ]
 
 .. note::
 
@@ -256,6 +277,12 @@ Run the database migrations:
 
     $ ./manage.py migrate
     $ ./manage.py migrate --database=newsdb
+
+Now run the deployment checks (no security issues should be identified):
+
+::
+
+    $ ./manage.py check --deploy
 
 Create a new superuser:
 
