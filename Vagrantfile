@@ -14,12 +14,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "boxcutter/debian82"
 
   # Synced folder for Django project
-  if ENV['DJANGO_SOURCE']
-    source = ENV['DJANGO_SOURCE']
-  else
-    source = 'src/'
-  end
-  config.vm.synced_folder source, "/src"
+  config.vm.synced_folder ENV.fetch("DJANGO_SOURCE", "src/"), "/src"
 
   # Port forwarding for HTTP server.
   config.vm.network "forwarded_port", guest: 80, host: 8000, auto_correct: true
