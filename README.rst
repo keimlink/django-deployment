@@ -33,8 +33,10 @@ Salt will install and configure the following software:
 * Dependencies to build `lxml <https://github.com/lxml/lxml>`_ and `pillow <https://python-pillow.github.io/>`_ Python packages
 
 To create the virtual machine you have to `download
-<https://www.vagrantup.com/downloads>`_ and install Vagrant at first. You will
-also need to install a hypervisor like `VirtualBox
+<https://www.vagrantup.com/downloads>`_ and install Vagrant at first. Vagrant
+1.8 has successfully been tested with this virtual machine.
+
+You will also need to install a hypervisor like `VirtualBox
 <https://www.virtualbox.org/>`_.
 
 Then you need to set the path to the Django project you want to deploy. You do
@@ -376,14 +378,13 @@ Troubleshooting
 ===============
 
 If the URL http://127.0.0.1:8000 does not work, check if Vagrant has
-auto-corrected the port forwarding to a different port. Vagrant displays this
-information after you executed ``vagrant up``. Example:
+auto-corrected the port forwarding for Apache to a different port. Use
+Vagrant's ``port`` command to display the forwarded port. Example:
 
 ::
 
-    ==> default: Forwarding ports...
-    default: 80 => 8000 (adapter 1)
-    default: 22 => 2222 (adapter 1)
+    $ vagrant port --guest 80
+    8001
 
 If you don't see anything in the browser or just an error message by Apache,
 here are a few things you can try to find out more.
