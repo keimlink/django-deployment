@@ -418,3 +418,10 @@ permissions:
     drwxr-xr-x 3 www-data www-data 4096 Nov 16 16:43 .
     drwxr-xr-x 6 vagrant  vagrant  4096 Nov 16 16:52 ..
     drwxr-xr-x 2 www-data www-data 4096 Nov 16 16:55 recipes
+
+Code of Conduct
+===============
+
+Everyone interacting in the django-deployment project's codebases, issue
+trackers, chat rooms and mailing lists is expected to follow the
+`PyPA Code of Conduct <https://www.pypa.io/en/latest/code-of-conduct/>`_.
