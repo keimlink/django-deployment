@@ -264,7 +264,7 @@ Install all Python packages:
     psycopg2, the PostgreSQL database adapter for the Python, has already been
     installed into the virtual env.
 
-    If you don't have a ``requirements.txt`` file create one in your
+    If you don't have a ``requirements.txt`` file, create one in your
     development environment using:
 
     ::
@@ -298,7 +298,7 @@ Load some fixtures for the ``recipes`` app:
 
 .. note::
 
-    If don't have any fixtures you can also manually create a few recipes
+    If you don't have any fixtures you can also manually create a few recipes
     later.
 
 Collect the static files into the directory ``/src/static_root``:
