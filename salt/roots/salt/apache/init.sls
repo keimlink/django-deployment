@@ -7,9 +7,11 @@ apache2:
       - file: /etc/apache2/conf-available/wsgi.conf
       - file: /etc/apache2/sites-available/django.conf
 
-Enable headers module:
-    apache_module.enable:
-        - name: headers
+enable-headers-module:
+  apache_module.enable:
+    - name: headers
+    - require:
+      - pkg: apache2
 
 libapache2-mod-wsgi:
   pkg.installed:
