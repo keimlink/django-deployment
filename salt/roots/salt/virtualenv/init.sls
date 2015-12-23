@@ -15,3 +15,4 @@ venv:
     - requirements: salt://virtualenv/requirements.txt
     - require:
       - sls: deps
+      - pip: virtualenv
