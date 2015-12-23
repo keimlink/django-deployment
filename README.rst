@@ -82,22 +82,30 @@ There will be a lot of output, important is the end which should look like this:
         Function: pkg.installed
           Result: True
          Comment: Package apache2 is already installed
-         Started: 18:12:14.323333
-        Duration: 294.493 ms
+         Started: 23:30:25.489454
+        Duration: 632.087 ms
+         Changes:
+    ----------
+              ID: /etc/apache2/conf-available/wsgi.conf
+        Function: file.managed
+          Result: True
+         Comment: File /etc/apache2/conf-available/wsgi.conf is in the correct state
+         Started: 23:30:26.127559
+        Duration: 15.482 ms
          Changes:
     ----------
               ID: /etc/apache2/sites-available/django.conf
         Function: file.managed
           Result: True
          Comment: File /etc/apache2/sites-available/django.conf updated
-         Started: 18:12:14.619727
-        Duration: 44.053 ms
+         Started: 23:30:26.143476
+        Duration: 15.175 ms
          Changes:
                   ----------
                   diff:
                       ---
                       +++
-                      @@ -26,9 +26,9 @@
+                      @@ -32,9 +32,9 @@
                            # WSGI
                            WSGIDaemonProcess django.example.com python-path=/src:/home/vagrant/venv/lib/python2.7/site-packages processes=2 threads=15 display-name=%{GROUP}
                            WSGIProcessGroup django.example.com
@@ -114,36 +122,53 @@ There will be a lot of output, important is the end which should look like this:
         Function: service.running
           Result: True
          Comment: Service restarted
-         Started: 18:12:14.872621
-        Duration: 2543.516 ms
+         Started: 23:30:26.319967
+        Duration: 1445.602 ms
          Changes:
                   ----------
                   apache2:
                       True
     ----------
+              ID: Enable headers module
+        Function: apache_module.enable
+            Name: headers
+          Result: True
+         Comment: headers already enabled.
+         Started: 23:30:27.767086
+        Duration: 0.748 ms
+         Changes:
+    ----------
               ID: libapache2-mod-wsgi
         Function: pkg.installed
           Result: True
          Comment: Package libapache2-mod-wsgi is already installed
-         Started: 18:12:17.417357
-        Duration: 4.855 ms
+         Started: 23:30:27.768049
+        Duration: 2.415 ms
+         Changes:
+    ----------
+              ID: /etc/apache2/conf-enabled/wsgi.conf
+        Function: file.symlink
+          Result: True
+         Comment: Symlink /etc/apache2/conf-enabled/wsgi.conf is present and owned by root:root
+         Started: 23:30:27.770629
+        Duration: 4.712 ms
          Changes:
     ----------
               ID: /etc/apache2/sites-enabled/000-default.conf
         Function: file.symlink
           Result: True
          Comment: Symlink /etc/apache2/sites-enabled/000-default.conf is present and owned by root:root
-         Started: 18:12:17.422777
-        Duration: 1.77 ms
+         Started: 23:30:27.775835
+        Duration: 1.519 ms
          Changes:
 
     Summary for local
     ------------
-    Succeeded: 5 (changed=2)
+    Succeeded: 8 (changed=2)
     Failed:    0
     ------------
-    Total states run:     5
-    Total run time:   2.889 s
+    Total states run:     8
+    Total run time:   2.118 s
 
 If ``Failed`` has a value different from ``0``, check if you have made any
 typos. Also take a close look at the error message(s). They usually contain a
