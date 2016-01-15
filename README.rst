@@ -61,6 +61,14 @@ using Vagrant`s ``ssh`` command:
 ::
 
     $ vagrant ssh
+    ----------------------------------------------------------------
+      Debian GNU/Linux 8.2 (jessie)               built 2016-01-11
+    ----------------------------------------------------------------
+    Last login: Fri Jan 15 20:04:43 2016 from 172.16.81.1
+    (venv)vagrant@vagrant:~$
+
+The prompt is prefixed with ``(venv)`` which is the name of the virtualenv that
+has automatically been activated for you on login.
 
 Changing the location where Apache searches the WSGI config
 ===========================================================
@@ -284,12 +292,6 @@ Deploying your Django project
 =============================
 
 Finally you have to run the following commands to deploy the Django project.
-
-Activate the virtualenv:
-
-::
-
-    $ . venv/bin/activate
 
 Change into the ``/src`` directory (where Vagrant created a synched folder
 pointing at your project files):

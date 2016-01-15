@@ -1,9 +1,17 @@
+include:
+  - virtualenv
+
 user-bashrc:
-  file.append:
+  file.blockreplace:
     - name: {{ pillar['project']['home'] }}/.bashrc
-    - text: |
-        # Start SaltStack automated configuration
+    - marker_start: "# START managed configuration -DO-NOT-EDIT-"
+    - marker_end: "# END managed configuration"
+    - content: |
         export LC_ALL=en_US.UTF-8
         export LANG=en_US.UTF-8
         export LANGUAGE=en_US.UTF-8
-        # End SaltStack automated configuration
+        source {{ pillar['project']['home'] }}/{{ pillar['project']['venv'] }}/bin/activate
+    - template: jinja
+    - append_if_not_found: True
+    - require:
+      - virtualenv: {{ pillar['project']['home'] }}/{{ pillar['project']['venv'] }}
