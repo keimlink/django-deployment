@@ -184,7 +184,25 @@ authenticate:
 
 ::
 
-     $ psql -h localhost -U django django
+    $ psql -h localhost -U django django
+    Password for user django:
+    psql (9.4.5)
+    SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+    Type "help" for help.
+
+    django=> \l
+                                       List of databases
+        Name     |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges
+    -------------+----------+----------+-------------+-------------+-----------------------
+     addressbook | django   | UTF8     | en_US.UTF8  | en_US.UTF8  |
+     django      | django   | UTF8     | en_US.UTF8  | en_US.UTF8  |
+     news        | django   | UTF8     | en_US.UTF8  | en_US.UTF8  |
+     postgres    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
+     template0   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+                 |          |          |             |             | postgres=CTc/postgres
+     template1   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+                 |          |          |             |             | postgres=CTc/postgres
+    (6 rows)
 
 The ``django`` PostgreSQL user has access to three databases:
 
