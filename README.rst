@@ -44,6 +44,15 @@ this by exporting the environment variable ``DJANGO_SOURCE``:
 
     $ export DJANGO_SOURCE='../django-workshop/projects/cookbook-project'
 
+.. note::
+
+    If you are on Windows please use the full path to the Django project. Also
+    don't use quotes:
+
+    ::
+
+        > set DJANGO_SOURCE=C:\Users\<username>\django-workshop\projects\cookbook-project
+
 After that simply start the virtual machine using:
 
 ::
