@@ -14,4 +14,4 @@ user-bashrc:
     - template: jinja
     - append_if_not_found: True
     - require:
-      - virtualenv: {{ pillar['project']['home'] }}/{{ pillar['project']['venv'] }}
+      - sls: virtualenv
