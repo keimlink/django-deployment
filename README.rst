@@ -71,7 +71,7 @@ using Vagrant`s ``ssh`` command:
     ----------------------------------------------------------------
       Debian GNU/Linux 8.6 (jessie)               built 2016-09-28
     ----------------------------------------------------------------
-    (venv)vagrant@vagrant:~$
+    (venv)vagrant@django-deployment-vagrant:~$
 
 The prompt is prefixed with ``(venv)`` which is the name of the virtualenv that
 has automatically been activated for you on login.
@@ -86,7 +86,8 @@ the end with the name of the directory where your ``wsgi.py`` file is located:
 
 ::
 
-    $ sudo salt-call state.sls apache pillar='{"project": {"django-config": "myproject"}}'
+    (venv)vagrant@django-deployment-vagrant:~$ sudo salt-call state.apply apache \
+        pillar='{"project": {"django-config": "myproject"}}'
 
 There will be a lot of output, important is the end which should look like this:
 
@@ -198,7 +199,7 @@ authenticate:
 
 ::
 
-    $ psql -h localhost -U django django
+    (venv)vagrant@django-deployment-vagrant:~$ psql -h localhost -U django django
     Password for user django:
     psql (9.4.5)
     SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
@@ -306,13 +307,13 @@ pointing at your project files):
 
 ::
 
-    $ cd /src
+    (venv)vagrant@django-deployment-vagrant:~$ cd /src
 
 Install all Python packages:
 
 ::
 
-    $ pip install -r requirements.txt
+    (venv)vagrant@django-deployment-vagrant:/src$ pip install -r requirements.txt
 
 .. note::
 
@@ -330,37 +331,26 @@ Run the database migrations:
 
 ::
 
-    $ ./manage.py migrate
-    $ ./manage.py migrate --database=newsdb
+    (venv)vagrant@django-deployment-vagrant:/src$ ./manage.py migrate
+    (venv)vagrant@django-deployment-vagrant:/src$ ./manage.py migrate --database=newsdb
 
 Now run the deployment checks (no security issues should be identified):
 
 ::
 
-    $ ./manage.py check --deploy
+    (venv)vagrant@django-deployment-vagrant:/src$ ./manage.py check --deploy
 
 Create a new superuser:
 
 ::
 
-    $ ./manage.py createsuperuser
-
-Load some fixtures for the ``recipes`` app:
-
-::
-
-    $ ./manage.py loaddata recipes initial_data
-
-.. note::
-
-    If you don't have any fixtures you can also manually create a few recipes
-    later.
+    (venv)vagrant@django-deployment-vagrant:/src$ ./manage.py createsuperuser
 
 Collect the static files into the directory ``/src/static_root``:
 
 ::
 
-    $ ./manage.py collectstatic
+    (venv)vagrant@django-deployment-vagrant:/src$ ./manage.py collectstatic
 
 Also, you need to copy the directory for media files (uploads) to a different
 location. This is necessary so that the user ``www-data``, which is the user
@@ -369,26 +359,26 @@ transfer ownership of directories in a Vagrant share.
 
 ::
 
-    $ cp -R media /home/vagrant
+    (venv)vagrant@django-deployment-vagrant:/src$ cp -R media /home/vagrant
 
 If you don't have a ``media`` directory, just create one in ``/home/vagrant``:
 
 ::
 
-    $ mkdir /home/vagrant/media
+    (venv)vagrant@django-deployment-vagrant:/src$ mkdir /home/vagrant/media
 
 Then change the owner and group of the ``media`` directory to ``www-data``:
 
 ::
 
-    $ sudo chown -R www-data: /home/vagrant/media
+    (venv)vagrant@django-deployment-vagrant:/src$ sudo chown -R www-data: /home/vagrant/media
 
 Finally restart the Apache web server:
 
 ::
 
-    $ sudo service apache2 stop
-    $ sudo service apache2 start
+    (venv)vagrant@django-deployment-vagrant:/src$ sudo service apache2 stop
+    (venv)vagrant@django-deployment-vagrant:/src$ sudo service apache2 start
 
 Now open http://127.0.0.1:8000 and visit your Django project!
 
@@ -421,19 +411,19 @@ Run the following command to see Apache status information:
 
 ::
 
-    $ sudo service apache2 status
+    (venv)vagrant@django-deployment-vagrant:/src$ sudo service apache2 status
 
 Take a look at Apache`s global error log:
 
 ::
 
-    $ sudo less /var/log/apache2/error.log
+    (venv)vagrant@django-deployment-vagrant:/src$ sudo less /var/log/apache2/error.log
 
 Examine the Apache error log for the virtual host:
 
 ::
 
-    $ sudo less /var/log/apache2/django.example.com-error.log
+    (venv)vagrant@django-deployment-vagrant:/src$ sudo less /var/log/apache2/django.example.com-error.log
 
 Check if the ``media`` directory has been copied and has the correct
 permissions:
@@ -441,7 +431,7 @@ permissions:
 
 ::
 
-    $ ls -la /home/vagrant/media
+    (venv)vagrant@django-deployment-vagrant:/src$ ls -la /home/vagrant/media
     total 20
     drwxr-xr-x 3 www-data www-data 4096 Nov 16 16:43 .
     drwxr-xr-x 6 vagrant  vagrant  4096 Nov 16 16:52 ..

@@ -12,6 +12,7 @@ Vagrant.configure(2) do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "boxcutter/debian8"
+  config.vm.hostname = "django-deployment-vagrant"
 
   # Synced folder for Django project
   config.vm.synced_folder ENV.fetch("DJANGO_SOURCE", "src/"), "/src"
