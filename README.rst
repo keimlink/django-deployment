@@ -36,8 +36,8 @@ To create the virtual machine you have to `download
 <https://www.vagrantup.com/downloads>`_ and install Vagrant at first. Vagrant
 1.8 has successfully been tested with this virtual machine.
 
-You will also need to install a hypervisor like `VirtualBox
-<https://www.virtualbox.org/>`_.
+You also have to install
+`VirtualBox 5.0 <https://www.virtualbox.org/wiki/Download_Old_Builds_5_0>`_.
 
 Then you need to set the path to the Django project you want to deploy. You do
 this by exporting the environment variable ``DJANGO_SOURCE``:
