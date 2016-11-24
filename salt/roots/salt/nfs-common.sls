@@ -1,3 +1,0 @@
-nfs-common:
-  pkg:
-    - installed

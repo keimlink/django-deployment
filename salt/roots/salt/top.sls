@@ -5,7 +5,6 @@ base:
     - git
     - curl
     - pip
-    - nfs-common
     - sqlite3
     - tree
     - nano

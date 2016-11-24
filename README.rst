@@ -21,7 +21,6 @@ Salt will install and configure the following software:
 * `Git <https://git-scm.com/>`_
 * `memcached <http://memcached.org/>`_ and `python-memcached <http://www.tummy.com/software/python-memcached/>`_
 * `nano <http://www.nano-editor.org/>`_
-* `nfs-common <https://packages.debian.org/jessie/nfs-common>`_
 * `Node.js <https://nodejs.org/en/>`_ and `npm <https://www.npmjs.com/>`_
 * `pip <https://pip.pypa.io/>`_
 * `Python 3.4 <https://www.python.org/>`_
