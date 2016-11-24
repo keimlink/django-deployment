@@ -15,7 +15,7 @@ configuration will install all necessary software during setup. It's a `Debian
 
 Salt will install and configure the following software:
 
-* `Apache <https://httpd.apache.org/>`_ and `mod_wsgi <http://www.modwsgi.org/>`_
+* `Apache <https://httpd.apache.org/>`_ and `mod_wsgi <http://www.modwsgi.org/>`_ for Python 3
 * `curl <http://curl.haxx.se/>`_
 * `gettext <https://www.gnu.org/software/gettext/>`_
 * `Git <https://git-scm.com/>`_
@@ -24,11 +24,11 @@ Salt will install and configure the following software:
 * `nfs-common <https://packages.debian.org/jessie/nfs-common>`_
 * `Node.js <https://nodejs.org/en/>`_ and `npm <https://www.npmjs.com/>`_
 * `pip <https://pip.pypa.io/>`_
+* `Python 3.4 <https://www.python.org/>`_
 * `PostgreSQL <http://www.postgresql.org/>`_ and `psycopg2 <http://initd.org/psycopg/>`_
 * `SQLite <https://www.sqlite.org/>`_
 * `tree <http://mama.indstate.edu/users/ice/tree/>`_
 * `Vim <http://www.vim.org/>`_
-* `virtualenv <https://virtualenv.pypa.io/>`_
 * `wkhtmltopdf <http://wkhtmltopdf.org/>`_
 * Dependencies to build `lxml <https://github.com/lxml/lxml>`_ and `pillow <https://python-pillow.github.io/>`_ Python packages
 
@@ -116,7 +116,7 @@ There will be a lot of output, important is the end which should look like this:
                       +++
                       @@ -32,9 +32,9 @@
                            # WSGI
-                           WSGIDaemonProcess django.example.com python-path=/src:/home/vagrant/venv/lib/python2.7/site-packages processes=2 threads=15 display-name=%{GROUP}
+                           WSGIDaemonProcess django.example.com python-path=/src:/home/vagrant/venv/lib/python3.4/site-packages processes=2 threads=15 display-name=%{GROUP}
                            WSGIProcessGroup django.example.com
                       -    WSGIScriptAlias / /src/cookbook/wsgi.py
                       +    WSGIScriptAlias / /src/myproject/wsgi.py

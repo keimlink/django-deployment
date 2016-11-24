@@ -11,6 +11,7 @@ base:
     - nano
     - vim
     - deps
+    - python3
     - virtualenv
     - npm
     - memcached

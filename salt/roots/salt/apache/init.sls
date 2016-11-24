@@ -13,7 +13,7 @@ enable-headers-module:
     - require:
       - pkg: apache2
 
-libapache2-mod-wsgi:
+libapache2-mod-wsgi-py3:
   pkg.installed:
     - require:
       - pkg: apache2
