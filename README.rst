@@ -62,9 +62,8 @@ using Vagrant`s ``ssh`` command:
 
     $ vagrant ssh
     ----------------------------------------------------------------
-      Debian GNU/Linux 8.2 (jessie)               built 2016-01-11
+      Debian GNU/Linux 8.6 (jessie)               built 2016-09-28
     ----------------------------------------------------------------
-    Last login: Fri Jan 15 20:04:43 2016 from 172.16.81.1
     (venv)vagrant@vagrant:~$
 
 The prompt is prefixed with ``(venv)`` which is the name of the virtualenv that
