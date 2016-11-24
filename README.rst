@@ -258,6 +258,8 @@ related checks as we're not using SSL for this deployment.
         },
     }
 
+    WKHTMLTOPDF_CMD = 'wkhtmltopdf'
+
     # Security
 
     CSRF_COOKIE_HTTPONLY = True
