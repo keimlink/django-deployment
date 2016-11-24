@@ -22,7 +22,6 @@ Salt will install and configure the following software:
 * `memcached <http://memcached.org/>`_ and `python-memcached <http://www.tummy.com/software/python-memcached/>`_
 * `nano <http://www.nano-editor.org/>`_
 * `Node.js <https://nodejs.org/en/>`_ and `npm <https://www.npmjs.com/>`_
-* `pip <https://pip.pypa.io/>`_
 * `Python 3.4 <https://www.python.org/>`_
 * `PostgreSQL <http://www.postgresql.org/>`_ and `psycopg2 <http://initd.org/psycopg/>`_
 * `SQLite <https://www.sqlite.org/>`_

@@ -4,7 +4,6 @@ base:
     - bashrc
     - git
     - curl
-    - pip
     - sqlite3
     - tree
     - nano
