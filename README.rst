@@ -155,10 +155,10 @@ There will be a lot of output, important is the end which should look like this:
         Duration: 0.748 ms
          Changes:
     ----------
-              ID: libapache2-mod-wsgi
+              ID: libapache2-mod-wsgi-py3
         Function: pkg.installed
           Result: True
-         Comment: Package libapache2-mod-wsgi is already installed
+         Comment: Package libapache2-mod-wsgi-py3 is already installed
          Started: 23:30:27.768049
         Duration: 2.415 ms
          Changes:
