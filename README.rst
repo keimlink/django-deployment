@@ -199,9 +199,9 @@ authenticate:
                                        List of databases
         Name     |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges
     -------------+----------+----------+-------------+-------------+-----------------------
-     addressbook | django   | UTF8     | en_US.UTF8  | en_US.UTF8  |
      django      | django   | UTF8     | en_US.UTF8  | en_US.UTF8  |
      news        | django   | UTF8     | en_US.UTF8  | en_US.UTF8  |
+     nobelprizes | django   | UTF8     | en_US.UTF8  | en_US.UTF8  |
      postgres    | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 |
      template0   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
                  |          |          |             |             | postgres=CTc/postgres
@@ -213,7 +213,7 @@ The ``django`` PostgreSQL user has access to three databases:
 
 * ``django``
 * ``news``
-* ``addressbook``
+* ``nobelprizes``
 
 Configuring your Django project
 ===============================
@@ -251,7 +251,7 @@ related checks as we're not using SSL for this deployment.
         },
         'addressdb': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'addressbook',
+            'NAME': 'nobelprizes',
             'USER': 'django',
             'PASSWORD': 'django',
             'CONN_MAX_AGE': 600,

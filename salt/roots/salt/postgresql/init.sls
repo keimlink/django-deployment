@@ -51,7 +51,7 @@ postgresql-db-news:
 
 postgresql-db-addresses:
   postgres_database.present:
-    - name: {{ pillar['db']['db-addressbook'] }}
+    - name: {{ pillar['db']['db-nobelprizes'] }}
     - encoding: UTF8
     - lc_ctype: en_US.UTF8
     - lc_collate: en_US.UTF8
