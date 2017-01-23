@@ -124,7 +124,7 @@ There will be a lot of output, important is the end which should look like this:
                       +++
                       @@ -32,9 +32,9 @@
                            # WSGI
-                           WSGIDaemonProcess django.example.com python-path=/src:/home/vagrant/venv/lib/python3.4/site-packages processes=2 threads=15 display-name=%{GROUP}
+                           WSGIDaemonProcess django.example.com python-path=/src:/home/vagrant/venv/lib/python3.4/site-packages processes=2 threads=15 display-name=%{GROUP} lang='en_US.UTF-8' locale='en_US.UTF-8'
                            WSGIProcessGroup django.example.com
                       -    WSGIScriptAlias / /src/cookbook/wsgi.py
                       +    WSGIScriptAlias / /src/myproject/wsgi.py
